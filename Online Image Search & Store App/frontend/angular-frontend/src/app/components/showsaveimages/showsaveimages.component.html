@@ -1,0 +1,96 @@
+<div class="container mt-3" style="margin-bottom: 200px">
+
+<h5 class="text-center text-danger p-2">Save Images</h5>
+
+  <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="msg">
+    <strong>Congratulations!! </strong>  Image data deleted successfully
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="msg1">
+    <strong>Congratulations!! </strong>  Image data updated successfully
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
+  <table class="table table-striped">
+
+    <thead>
+
+    <tr>
+      <th>Image Name</th>
+      <th>Image</th>
+      <th>Action</th>
+    </tr>
+
+    </thead>
+
+    <tbody *ngFor="let rowImageData of dataArray ">
+    <td class="text-primary">{{rowImageData.name}}</td>
+    <td><img src="{{rowImageData.imageUrl}}}" alt="" style="height: 100px;width: 150px"></td>
+
+
+    <td>
+
+      <button  type="button"   class="btn btn-primary mr-2" (click)="getImageData(rowImageData.id)"  data-toggle="modal" data-target="#ModalCenter" >Edit</button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" >
+        <div class="modal-dialog modal-dialog-centered" role="document" >
+          <div class="modal-content" *ngFor="let row of dbRowArray">
+            <div class="modal-header">
+              <h5 class="modal-title text-danger" id="exampleModalLongTitle">Update Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" >
+
+              <form>
+                <div class="form-group">
+                  <label for="exampleInputname">Image Name</label>
+                  <input type="text" class="form-control" id="exampleInputname" name="imageName" [(ngModel)]="row.name" >
+                </div>
+              </form>
+
+              <img src="{{row.imageUrl}}" alt="" style="height: 300px;width: 465px">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" (click)="updateData(row.id,row.name)" data-dismiss="modal">Update</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+      <button class="btn btn-danger" (click)="deleteRow(rowImageData.id)">Delete</button>
+
+    </td>
+
+    </tbody>
+
+
+  </table>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

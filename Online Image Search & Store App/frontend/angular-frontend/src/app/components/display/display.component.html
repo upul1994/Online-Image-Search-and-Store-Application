@@ -1,0 +1,35 @@
+<div class="container mt-5">
+
+<div class="row">
+
+  <div class="col-md-4" *ngFor="let image of homeAllData" >
+
+
+    <div class="card-group mb-5" >
+      <div class="card" style="height: 350px;width: 500px">
+        <h5 class="card-title text-center  text-primary ">{{image.tags}}</h5>
+
+        <div class="card-body">
+          <img class="card-img"  src="{{image.largeImageURL}}"  alt="Card image cap" style="height: 200px;width: 300px">
+        </div>
+
+        <div class="card-footer">
+          <button class="btn btn-success float-right ml-3" routerLink="/view" [queryParams]="{q:homeValue,id:image.id}" >View</button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
